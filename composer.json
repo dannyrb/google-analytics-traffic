@@ -1,0 +1,13 @@
+{
+    "name": "drb/public-site-stats",
+    "authors": [
+        {
+            "name": "Danny Brown",
+            "email": "csengineer13@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "google/apiclient": "^2@DEV"
+    }
+}
