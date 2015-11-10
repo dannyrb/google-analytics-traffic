@@ -1,18 +1,17 @@
 <?php
 
 	// MUST be using composer
-   	require_once '/home/csengineer13/dannyrb.com/traffic/vendor/autoload.php';
-   	session_start();	 	
+  require_once '/home/csengineer13/dannyrb.com/traffic/vendor/autoload.php';
+  session_start();	 	
 
 	$client = new Google_Client();	 	
-	$client->setApplicationName("API Project");
+	$client->setApplicationName("API Project"); // Name of proj in GoogleDeveloperConsole
 
 	// Generated in GoogleDeveloperConsole --> Credentials --> Service Accounts
-	$client->setAuthConfig('API Project-c0a14bc34a03.json');
+	$client->setAuthConfig('/home/csengineer13/secure-creds/API Project-c0a14bc34a03.json');
 	$client->addScope(Google_Service_Analytics::ANALYTICS_READONLY);
 
-
-	// Set token, or fetch token
+	// Grab token if it's set
 	if (isset($_SESSION['service_token'])) {
 	 	$client->setAccessToken($_SESSION['service_token']);
 	}
@@ -26,18 +25,17 @@
 	$_SESSION['service_token'] = $client->getAccessToken();
 
 	$myToken = $client->getAccessToken();
-
-
-	// $service = new Google_Service_Analytics($client);
-
-	// Adding Dimensions
-	// $params = array('dimensions' => 'ga:userType');	
-	// requesting the data	
-	// $data = $service->data_ga->get("ga:110849216", "2015-10-01", "2015-11-08", "ga:users,ga:sessions", $params );	 
 ?>
 <html>
     <head>
-        <title>Test</title>
+        <title>Traffic for Dannyrb.com</title>
+        <style>
+        body { text-align: center; }
+        .chart {
+          width: 90%;
+          margin: 0 auto;
+        }
+        </style>
     </head>
     <body>
         <!-- Load Google's Embed API Library -->
@@ -50,8 +48,10 @@
             }(window,document,'script'));
         </script>
 
-        <div id="chart-1-container"></div>
-        <div id="chart-2-container"></div>
+        <h1>Traffic For The Last 30 Days</h1>
+
+        <div id="chart-1-container" class="chart"></div>
+        <div id="chart-2-container" class="chart"></div>
 
         <script>
 
