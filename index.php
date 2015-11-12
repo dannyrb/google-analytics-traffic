@@ -50,6 +50,7 @@
         .row {
             margin-right: -15px;
             margin-left: -15px;
+            margin-bottom: 35px;
         }
         .row:after {
             content:'';
@@ -71,10 +72,24 @@
             margin: 0 auto;
             min-height: 200px;
         }
+
+        /* Styling Charts.JS Legend */
         .legend {
-            width: 90%;
-            margin: 0 auto;
-            min-height:50px;
+            list-style: none;
+            margin: 0;
+            padding: 1em 0 0;
+            text-align: center;
+        }
+        .legend > li {
+            display: inline-block;
+            padding: .25em .5em;
+        }
+        .legend > li > i {
+            display: inline-block;
+            height: 1em;
+            margin-right: .5em;
+            vertical-align: -.1em;
+            width: 1em;
         }
         </style>
     </head>
